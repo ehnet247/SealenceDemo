@@ -23,6 +23,7 @@ namespace SealenceDemo.ViewModels
         private bool enableSimulation = false;
         partial void OnEnableSimulationChanged(bool value)
         {
+            // Toggle button has been clicked
             if (EnableSimulation)
                 SimulateButtonText = "Stop simulation";
             else
@@ -34,7 +35,9 @@ namespace SealenceDemo.ViewModels
         public MainViewModel()
         {
             _dataSimulationTimer = new Timer(OnTimerElapsed);
+            // Setup the data simulation timer
             _dataSimulationTimer.Change(1000, 1000);
+            // Setup the Winches controls
             if (Winch1ViewModel == null)
             {
                 Winch1ViewModel = new WinchViewModel();
@@ -59,6 +62,7 @@ namespace SealenceDemo.ViewModels
 
         private void OnTimerElapsed(object o)
         {
+            // Update the simulated values if simulation is enabled
             if (EnableSimulation)
             {
                 _growthCounter--;
